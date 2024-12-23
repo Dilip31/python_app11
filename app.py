@@ -14,5 +14,12 @@ def add_task():
     tasks.append(task)
     return redirect(url_for('index'))
 
+@app.route('/delete', methods=['POST'])
+def delete_task():
+    task = request.form['task']
+    if task in tasks:  # Check if task exists in the list
+        tasks.remove(task)
+    return redirect(url_for('index'))
+
 if __name__ == '__main__':
     app.run(debug=True)

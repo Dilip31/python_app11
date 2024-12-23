@@ -7,7 +7,13 @@
     <h1>Task Manager</h1>
     <ul>
         {% for task in tasks %}
-            <li>{{ task }}</li>
+            <li>
+                {{ task }}
+                <form method="POST" action="/delete" style="display:inline;">
+                    <input type="hidden" name="task" value="{{ task }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
         {% endfor %}
     </ul>
     <form method="POST" action="/add">
@@ -16,3 +22,4 @@
     </form>
 </body>
 </html>
+
